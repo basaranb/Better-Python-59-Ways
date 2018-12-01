@@ -28,17 +28,23 @@ print(y)
 # b'esoognom'
 
 
-# That works well for byte strings and ASCII characters, but it will break for
-# Unicode characters encoded as UTF-8 byte strings.
-
+# This also works for Unicode characters encoded as UTF-8 byte strings.
+# Byte string characters are reversed as code groups corresponding to that character.
 
 w = '谢谢谢谢'
-# x = w.enocde('utf-8')
-# y = x[::-1]
-# z = y.decode('utf-8')
-# print(y)
-# print(z)
-# AttributeError: 'str' object has no attribute 'enocde'
+print(type(w))
+# <class 'str'>
+print(w[::-1])
+#'谢谢谢谢'
+x = w.encode("utf-8")
+print(type(x))
+# <class 'bytes'>
+print(x)
+# b'\xe8\xb0\xa2\xe8\xb0\xa2\xe8\xb0\xa2\xe8\xb0\xa2'
+print(x[::-1])
+# b'\xa2\xb0\xe8\xa2\xb0\xe8\xa2\xb0\xe8\xa2\xb0\xe8'
+ 
+
 
 
 # Are negative strides besides -1 useful? Consider the following examples.
